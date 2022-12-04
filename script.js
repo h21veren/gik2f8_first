@@ -45,8 +45,8 @@ function searchBooks(searchTerm) {
 handleKeyPress('e');
 
 function renderBookList(list) {
+    /* Element i HTML-listan visas/döljs beroende på listans innehåll.  */
     console.log(list)
-
 }
 
 
