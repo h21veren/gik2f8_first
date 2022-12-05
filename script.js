@@ -1,7 +1,7 @@
 'use strict';
 /* Vad ska vi göra här? */
 
-const searchInput = null;
+
 const bookList = [
     {
         id: 1,
@@ -14,15 +14,28 @@ const bookList = [
         title: 'Hamlet'
     }
 ];
+/* const searchInput = document.children[0].children[1].children[1].children[1]; */
+const searchField = document.getElementById('searchField')
+console.log(searchField);
 
-function handleKeyPress(input) {
+/* keydown och keyup är det vi kan testa om vi vill filtrera listan så att den filtrerar när vi vi skriver in något i 
+sökrutan (inte när vi lämnar eller klickar utan direkt när vi skriver)
+Vi använder en anonym arrow funktion för att testa detta 
+searchField.addEventListener("keyup", (e) => console.log(e.target.value));
+*/
+
+/* Nu när vi testat så sätter vi in handle keypress och gör om vår handlekeypress */
+
+searchField.addEventListener("keyup", handleKeyPress);
+
+function handleKeyPress(e) {
     /*  Ta emot/läsa av värdet i inputfältet
         Skicka värdet till searchBooks
         searchBooks returnerar en filtrerad lista
         Filtrerade listan skickas till renderBookList som ritar ut listan
         Egen notering: handleKeyPress använder searchBooks och returnerar en lista.
     */ 
-    searchBooks(input);
+    searchBooks(e.target.value);
 }
 
 function searchBooks(searchTerm) {
@@ -42,7 +55,6 @@ function searchBooks(searchTerm) {
     renderBookList(filteredList);
 }
 
-handleKeyPress('e');
 
 function renderBookList(list) {
     /* Element i HTML-listan visas/döljs beroende på listans innehåll.  */
